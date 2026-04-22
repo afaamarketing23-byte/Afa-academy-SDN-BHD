@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - AFA Academy Sdn Bhd</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --navy-blue: #1a3a52;
+            --gold: #d4af37;
+            --light-navy: #e8f0f5;
+            --light-gold: #faf6ed;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #202020;
+            background: white;
+            overflow-x: hidden;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(26, 58, 82, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+		
+		.nav-container {
+    position: relative;
+}
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--navy-blue);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a.active {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: var(--gold);
+}
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background: var(--navy-blue);
+            transition: all 0.3s ease;
+        }
+
+        .hero-section {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--navy-blue) 0%, #2a5a7a 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy-blue);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .bg-light-navy {
+            background: var(--light-navy);
+        }
+
+        .bg-light-gold {
+            background: var(--light-gold);
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .story-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(26, 58, 82, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(26, 58, 82, 0.15);
+        }
+
+        .story-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold) 0%, #c49b2e 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+        }
+
+        .story-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--navy-blue);
+            margin-bottom: 0.75rem;
+        }
+
+        .story-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .mission-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 2px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .mission-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy-blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .mission-icon {
+            font-size: 2rem;
+        }
+
+        .mission-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .values-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .value-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--gold);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .value-item h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--navy-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .value-item p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .differentiator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .diff-card {
+            background: linear-gradient(135deg, white 0%, var(--light-navy) 100%);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(26, 58, 82, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .diff-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(26, 58, 82, 0.2);
+        }
+
+        .diff-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            opacity: 0.3;
+            margin-bottom: 0.5rem;
+        }
+
+        .diff-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--navy-blue);
+            margin-bottom: 1rem;
+        }
+
+        .diff-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .facility-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(26, 58, 82, 0.1);
+            margin-top: 3rem;
+        }
+
+        .facility-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .facility-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .facility-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .facility-item h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--navy-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .facility-item p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .footer {
+            background: var(--navy-blue);
+            color: white;
+            padding: 3rem 2rem 1.5rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+		
+		.footer-section-new h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+        }
+		
+		.footer-section-new p,
+        .footer-section-new a {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            text-decoration: none;
+            display: flex;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-3px);
+        }
+		.social-links p {
+			align-items:bottom;
+			margin-top:  6px;
+        }
+		
+		.social-links p:hover {
+            color: gold;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+			.nav-links a.active::after {
+    display: none;
+}
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem 0;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+    padding: 1.2rem 2rem;  /* 上下更大 */
+    line-height: 1.6;      /* 让文字更透气 */
+}
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+			
+			.mobile-menu-btn {
+    z-index: 1001;
+}
+			
+			.nav-links {
+    z-index: 1000;
+}
+			
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo-container">
+                <img src="https://api.kuse.ai/api/folder/v1/file/76316df8126a0b6eaba37c7edaabaa29004f5f76cf0d3a3033a52bab3613554c_2366287.png" alt="AFA Academy Logo" class="logo">
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="[Kuse] AFA Academy - Malaysia's First Gamified First Aid ... (1).html">Home</a></li>
+                <li><a href="[Kuse] About Us - AFA Academy Sdn Bhd.html" class="active">About</a></li>
+                <li><a href="[Kuse] Training Programs - AFA Academy Sdn Bhd.html">Training</a></li>
+                <li><a href="[Kuse] Safety Equipment Store - AFA Academy Sdn Bhd (2).html">Store</a></li>
+				<li><a href="[Kuse] Our Clientele  AFA Academy Sdn Bhd.html" class="nav-link">Clientele</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>About AFA Academy</h1>
+            <p>Pioneering gamified and digitalized first aid training in Malaysia. We're transforming traditional safety education into engaging, practical experiences that save lives.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-container">
+            <h2 class="section-title">Our Story</h2>
+            <p class="section-subtitle">From a vision to revolutionize safety training to becoming Malaysia's first gamified first aid training provider</p>
+            
+            <div class="story-grid">
+                <div class="story-card">
+                    <div class="story-icon"><img src="New folder/calendar_month_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.svg" alt="team" width="40px"></div>
+                    <h3>Founded</h3>
+                    <p>March 20, 2018 - Established with a mission to innovate safety education in Malaysia</p>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-icon"><img src="New folder/badge_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="team" width="40px"></div>
+                    <h3>Registration</h3>
+                    <p>Company No. 1272945P - A registered private limited company committed to professional excellence</p>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-icon"><img src="New folder/location_on_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.svg" alt="team" width="40px"></div>
+                    <h3>Location</h3>
+                    <p>KL address: <br>55-2, Jalan BS 1/1,Bukit Perniagaan Olive Hill,43300 seri Kembangan Selangor</p>
+					<p>JOHOR address: <br>7B, Jalan Sutera Tanjung 8/2,Taman Sutera Utama,81300 Skudai,Johor Darul Ta'zim</p>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-icon"><img src="New folder/groups_2_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.svg" alt="team" width="40px"></div>
+                    <h3>Our Team</h3>
+                    <p>Small but dedicated professional team of 2-10 experts passionate about safety training</p>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-icon"><img src="New folder/stadia_controller_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.svg" alt="team" width="40px"></div>
+                    <h3>Innovation Leader</h3>
+                    <p>Malaysia's first gamified first aid, CPR, and AED certification training provider</p>
+                </div>
+                
+                <div class="story-card">
+                    <div class="story-icon"><img src="New folder/mobile_2_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="team" width="40px"></div>
+                    <h3>Modern Approach</h3>
+                    <p>Combining digitalization with hands-on practical sessions for effective learning</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-light-gold">
+        <div class="section-container">
+            <h2 class="section-title">What Makes Us Different</h2>
+            <p class="section-subtitle">Five key differentiators that set AFA Academy apart from traditional training providers</p>
+            
+            <div class="differentiator-grid">
+                <div class="diff-card">
+                    <div class="diff-number">01</div>
+                    <h3>Gamified Learning Approach</h3>
+                    <p>Malaysia's first to gamify first aid, CPR, and AED certification training. We make learning fun, engaging, and memorable through interactive game-based methodologies.</p>
+                </div>
+                
+                <div class="diff-card">
+                    <div class="diff-number">02</div>
+                    <h3>Digitalized Training</h3>
+                    <p>Modern technology integration that enhances learning outcomes. Our digital platforms provide interactive content, progress tracking, and accessible resources.</p>
+                </div>
+                
+                <div class="diff-card">
+                    <div class="diff-number">03</div>
+                    <h3>Practical Focus</h3>
+                    <p>Moving away from pure theory to hands-on practical sessions. We believe in learning by doing, ensuring participants gain real, applicable skills.</p>
+                </div>
+                
+                <div class="diff-card">
+                    <div class="diff-number">04</div>
+                    <h3>Professional Team</h3>
+                    <p>Dedicated experts in safety education who are passionate about teaching. Our instructors bring real-world experience and certified expertise to every session.</p>
+                </div>
+                
+                <div class="diff-card">
+                    <div class="diff-number">05</div>
+                    <h3>Flexible Training Solutions</h3>
+                    <p>Customized programs for corporate clients, schools, and community groups. We adapt our training to meet your specific needs and schedules.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>AFA Academy Sdn Bhd</h3>
+                <p>Registration No. 201801010928 (1272945-P)</p>
+                <p>Malaysia's first gamified and digitalized first aid training provider</p>
+            </div>
+            
+            <div class="footer-section-new">
+                <h3>Contact Us</h3>
+                <p>📍 KL address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 55-2, Jalan BS 1/1,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bukit Perniagaan Olive Hill,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 43300 seri Kembangan <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Selangor</p>
+				<p>📍 JOHOR address:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7B, Jalan Sutera Tanjung 8/2,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Taman Sutera Utama,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 81300 Skudai,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Johor Darul Ta'zim</p>
+				<p><img src="New folder/mail_24dp_FFFFFF_FILL1_wght400_GRAD0_opsz24.svg" alt="mail" width="25"> askus@afaa.com.my </p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="[Kuse] AFA Academy - Malaysia's First Gamified First Aid ... (1).html">Home</a>
+                <a href="[Kuse] About Us - AFA Academy Sdn Bhd.html">About</a>
+                <a href="[Kuse] Training Programs - AFA Academy Sdn Bhd.html">Training</a>
+                <a href="[Kuse] Safety Equipment Store - AFA Academy Sdn Bhd (2).html">Store</a>
+				<a href="[Kuse] Our Clientele  AFA Academy Sdn Bhd.html">Our Clientele</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/AFA.com.my" target="_blank" aria-label="Facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+					<p>Facebook</p>
+                </div>
+				
+				 <div class="social-links">
+                    <a href="https://www.instagram.com/afaacademysdn/" target="_blank" aria-label="Facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.75 2C4.678 2 2 4.678 2 7.75v8.5C2 19.322 4.678 22 7.75 22h8.5C19.322 22 22 19.322 22 16.25v-8.5C22 4.678 19.322 2 16.25 2h-8.5zm0 2h8.5C18.216 4 20 5.784 20 7.75v8.5C20 18.216 18.216 20 16.25 20h-8.5C5.784 20 4 18.216 4 16.25v-8.5C4 5.784 5.784 4 7.75 4zm8.75 1.5a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
+                        </svg>
+                      </a>
+					<p>Instagram</p>
+                </div>
+				
+				<div class="social-links">
+                    <a href="https://www.tiktok.com/@afa.academy.sdn.b?_r=1&_t=ZS-95UmbCtR1uS" target="_blank" aria-label="Facebook">
+                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12.75 2h2.5c.2 1.7 1.3 3.1 2.9 3.8v2.6c-1.2 0-2.3-.4-3.2-1v6.6c0 3.2-2.6 5.8-5.8 5.8S3.4 17.2 3.4 14s2.6-5.8 5.8-5.8c.4 0 .8 0 1.2.1v2.7c-.4-.1-.8-.2-1.2-.2-1.7 0-3.1 1.4-3.1 3.1S7.5 17 9.2 17s3.1-1.4 3.1-3.1V2z"/>
+                     </svg>
+                      </a>
+					<p>TikTok</p>
+                </div>
+				
+				<div class="social-links">
+                    <a href="https://xhslink.com/m/6Ph2P5UMvH7" target="_blank" aria-label="Facebook">
+                   <img src="New folder/Xiaohongshu-小红书-Logo.png" width="40" height="40" fill="currentColor" alt="rednote">
+                      </a>
+					<p>Red Note</p>
+                </div>
+				
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 AFA Academy Sdn Bhd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        function toggleMenu() {
+            const navLinks = document.getElementById(`navLinks`);
+            navLinks.classList.toggle(`active`);
+        }
+
+        let lastScroll = 0;
+        const header = document.querySelector(`.header`);
+
+        window.addEventListener(`scroll`, () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                header.style.boxShadow = `0 2px 10px rgba(26, 58, 82, 0.1)`;
+            } else {
+                header.style.boxShadow = `0 4px 20px rgba(26, 58, 82, 0.15)`;
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: `0px 0px -50px 0px`
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = `1`;
+                    entry.target.style.transform = `translateY(0)`;
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll(`.story-card, .mission-card, .diff-card, .value-item, .facility-item`).forEach(el => {
+            el.style.opacity = `0`;
+            el.style.transform = `translateY(30px)`;
+            el.style.transition = `opacity 0.6s ease, transform 0.6s ease`;
+            observer.observe(el);
+        });
+    </script>
+    <script src="https://cdn.kuse.ai/sdk.prd.js"></script>
+</body>
+</html>

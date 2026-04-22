@@ -1,0 +1,674 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Programs - AFA Academy Sdn Bhd</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --navy-blue: #1a3a52;
+            --gold: #d4af37;
+            --light-bg: #f8f9fa;
+            --text-dark: #202020;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background: white;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+		
+		.nav-links {
+    transition: all 0.3s ease;
+}
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--navy-blue);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--navy-blue) 0%, #2a5a7a 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy-blue);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Course Grid */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: var(--gold);
+        }
+
+        .course-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--navy-blue), #2a5a7a);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .course-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--navy-blue);
+            margin-bottom: 1rem;
+        }
+
+        .course-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .course-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #555;
+        }
+
+        .course-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            background: var(--light-bg);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gold), #f0c14b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--navy-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--navy-blue) 0%, #2a5a7a 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy-blue);
+        }
+
+        .btn-primary:hover {
+            background: #f0c14b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--navy-blue);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--navy-blue);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+		
+		.footer-section-local h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .footer-section-local p,
+        .footer-section-local a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            margin-bottom: 0.8rem;
+			display:flex;
+        }
+		
+		.footer-section-local img{
+			margin-bottom: 52px;
+		}
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Horizontal Scrolling Courses */
+        .courses-scroll-container {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 2rem 0;
+            margin: 0 -2rem;
+        }
+
+        .courses-scroll-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .courses-scroll-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .courses-scroll-container::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 10px;
+        }
+
+        .courses-scroll-container::-webkit-scrollbar-thumb:hover {
+            background: var(--navy-blue);
+        }
+
+        .course-scroll-wrapper {
+            display: flex;
+            gap: 2rem;
+            padding: 0 2rem;
+            width: max-content;
+        }
+
+        .course-card {
+            flex: 0 0 350px;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .course-card {
+                flex: 0 0 280px;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+       <div class="nav-container">
+    <div class="logo-container">
+        <img src="New folder/AFA LOGO.jpg.png" alt="AFA Academy Logo" class="logo">
+    </div>
+
+    <!-- ✅ 汉堡按钮 -->
+    <button id="menu-btn" class="md:hidden text-2xl">
+        ☰
+    </button>
+
+    <!-- ✅ menu -->
+    <ul id="menu" class="nav-links md:flex hidden flex-col md:flex-row absolute md:static top-20 left-0 w-full md:w-auto bg-white md:bg-transparent p-5 md:p-0 shadow md:shadow-none">
+        <li><a href="[Kuse] AFA Academy - Malaysia's First Gamified First Aid ... (1).html">Home</a></li>
+        <li><a href="[Kuse] About Us - AFA Academy Sdn Bhd.html">About</a></li>
+        <li><a href="[Kuse] Training Programs - AFA Academy Sdn Bhd.html" class="active">Training</a></li>
+        <li><a href="[Kuse] Safety Equipment Store - AFA Academy Sdn Bhd (2).html">Store</a></li>
+        <li><a href="[Kuse] Our Clientele  AFA Academy Sdn Bhd.html">Clientele</a></li>
+    </ul>
+</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Our Training Programs</h1>
+        <p>Professional Safety Training with Gamified Learning Approach</p>
+    </section>
+
+    <!-- Training Courses Section -->
+    <section class="container">
+        <h2 class="section-title">Comprehensive Safety Training Courses</h2>
+        <div class="courses-scroll-container">
+            <div class="course-scroll-wrapper">
+            <!-- First Aid, CPR & AED -->
+            <div class="course-card">
+                <div class="course-icon"><img src="New folder/ambulance_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="ambulance"></div>
+                <h3>First Aid, CPR & AED</h3>
+                <ul>
+                    <li>Comprehensive first aid certification</li>
+                    <li>CPR techniques and practice</li>
+                    <li>AED operation training</li>
+                    <li>Gamified learning modules</li>
+                    <li>Hands-on practical sessions</li>
+                    <li>Certification upon completion</li>
+                </ul>
+            </div>
+
+            <!-- Fire Fighting -->
+            <div class="course-card">
+                <div class="course-icon"><img src="New folder/fire_extinguisher_24dp_FFFFFF_FILL1_wght400_GRAD0_opsz24.svg" alt="ambulance"></div>
+                <h3>Fire Fighting</h3>
+                <ul>
+                    <li>Fire safety fundamentals</li>
+                    <li>Fire extinguisher operation</li>
+                    <li>Emergency evacuation procedures</li>
+                    <li>Fire prevention strategies</li>
+                    <li>Practical fire drills</li>
+                </ul>
+            </div>
+
+            <!-- Emergency Response Plan -->
+            <div class="course-card">
+                <div class="course-icon"><img src="New folder/e911_emergency_24dp_FFFFFF_FILL1_wght400_GRAD0_opsz24.svg" alt="ambulance"></div>
+                <h3>Emergency Response Plan</h3>
+                <ul>
+                    <li>Emergency preparedness planning</li>
+                    <li>Crisis management protocols</li>
+                    <li>Evacuation planning</li>
+                    <li>Emergency communication</li>
+                    <li>Incident response coordination</li>
+                </ul>
+            </div>
+
+            <!-- Forklift Handling -->
+            <div class="course-card">
+                <div class="course-icon"><img src="New folder/forklift_24dp_FFFFFF_FILL1_wght400_GRAD0_opsz24.svg" alt="ambulance"></div>
+                <h3>Forklift Handling</h3>
+                <ul>
+                    <li>Safe forklift operation</li>
+                    <li>Load handling techniques</li>
+                    <li>Warehouse safety</li>
+                    <li>Practical driving sessions</li>
+                    <li>Certification training</li>
+                </ul>
+            </div>
+
+            <!-- Chemical Spill & Management -->
+            <div class="course-card">
+                <div class="course-icon"><img src="New folder/experiment_24dp_FFFFFF_FILL1_wght400_GRAD0_opsz24.svg" alt="ambulance"></div>
+                <h3>Chemical Spill & Management</h3>
+                <ul>
+                    <li>Chemical hazard identification</li>
+                    <li>Spill response procedures</li>
+                    <li>PPE requirements</li>
+                    <li>Containment techniques</li>
+                    <li>Safe disposal methods</li>
+                </ul>
+            </div>
+
+            <!-- Confined Space, Working at Height & More -->
+            <div class="course-card">
+                <div class="course-icon"><img src="New folder/Gemini_Generated_Image_96rw2096rw2096rw 1.png" alt="ambulance" width="70px"></div>
+                <h3>Confined Space, Working at Height & More</h3>
+                <ul>
+                    <li>Confined space entry procedures</li>
+                    <li>Fall protection systems</li>
+                    <li>Scaffolding and ladder safety</li>
+                    <li>Harness and equipment use</li>
+                    <li>Risk assessment and rescue operations</li>
+                    <li>Permit-to-work systems</li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <div class="container">
+            <h2 class="section-title">Why Choose AFA Academy</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon"><img src="New folder/stadia_controller_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.svg" alt="ambulance" width="40px"></div>
+                    <h3>Malaysia's First Gamified Approach</h3>
+                    <p>Innovative gamified learning makes safety training engaging and effective</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><img src="New folder/person_raised_hand_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.svg" alt="raise hand" width="40px"></div>
+                    <h3>Hands-On Practical Focus</h3>
+                    <p>Real-world scenarios and practical exercises for better retention</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><img src="New folder/work_history_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.svg" alt="work experience" width="40px"></div>
+                    <h3>Experienced Instructors</h3>
+                    <p>Learn from certified professionals with industry expertise</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><img src="New folder/calendar_check_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="schedule" width="40px"></div>
+                    <h3>Flexible Scheduling</h3>
+                    <p>Training sessions tailored to your organization's schedule</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><img src="New folder/groups_2_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.svg" width="40px" alt="team"></div>
+                    <h3>Corporate & Group Packages</h3>
+                    <p>Special packages for organizations and large groups</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><img src="New folder/license_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.svg" width="40px" alt="license"></div>
+                    <h3>Certification Provided</h3>
+                    <p>Recognized certifications upon successful completion</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Enhance Your Safety Skills?</h2>
+        <p>Contact us today to book your training session or request a customized program for your organization</p>
+        <div class="cta-buttons">
+            <a href="https://wa.me/60176603879" target="_blank" class="btn btn-primary">Book Training Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AFA Academy Sdn Bhd</h3>
+                <p>Professional Safety Training Provider</p>
+                <p>Registration No: 201801010928 (1272945-P)</p>
+            </div>
+            <div class="footer-section-local">
+                <h3>Contact Information</h3>
+			  <p><strong>Location:</strong><br></p><p><img src="New folder/location_on_24dp_FFFFFF_FILL1_wght400_GRAD0_opsz24.svg" alt="location">  KL address:
+      55-2, Jalan BS 1/1,
+      Bukit Perniagaan Olive Hill,
+      43300 seri Kembangan
+      Selangor</p>
+				<p><img src="New folder/location_on_24dp_FFFFFF_FILL1_wght400_GRAD0_opsz24.svg" alt="location">
+				JOHOR address:
+      7B, Jalan Sutera Tanjung 8/2 Taman Sutera Utama,81300 Skudai Johor Darul Ta'zim</p>
+                <p>Email: askus@afaa.com.my</p>
+                <p>Phone: +60 17-630 3879</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="[Kuse] AFA Academy - Malaysia's First Gamified First Aid ... (1).html">Home</a>
+                <a href="[Kuse] About Us - AFA Academy Sdn Bhd.html">About Us</a>
+                <a href="[Kuse] Training Programs - AFA Academy Sdn Bhd.html">Training Programs</a>
+                <a href="[Kuse] Safety Equipment Store - AFA Academy Sdn Bhd (2).html">Store</a>
+				<a href="[Kuse] Our Clientele  AFA Academy Sdn Bhd.html">Cliente</a>
+            </div>
+            <div class="footer-section">
+                <h3>Our Services</h3>
+                <p>First Aid & CPR Training</p>
+                <p>Fire Safety Training</p>
+                <p>Corporate Programs</p>
+                <p>Forklift Handing</p>
+				<p>Chemical Spill & management</p>
+				<p>Confined Space & working at height</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AFA Academy Sdn Bhd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.kuse.ai/sdk.prd.js"></script>
+	
+	<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+
+    menuBtn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+    });
+</script>
+	
+</body>
+</html>
